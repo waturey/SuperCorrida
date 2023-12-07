@@ -33,12 +33,12 @@ class Game {
     form = new Form();
     form.display();
 
-    car1 = createSprite(width / 2 - 50, height - 100);
+    car1 = createSprite(width / 2 - 50, height + 30);
     car1.addImage("car1", car1_img);
     car1.scale = 0.07;
     car1.addImage("blast", blastImage); //C42 //SA
 
-    car2 = createSprite(width / 2 + 100, height - 100);
+    car2 = createSprite(width / 2 + 100, height - 40);
     car2.addImage("car2", car2_img);
     car2.scale = 0.07;
     car2.addImage("blast", blastImage); //C42//SA
@@ -50,23 +50,24 @@ class Game {
     obstacle1 = new Group();
     obstacle2 = new Group();
     var obstacle1Positions = [
-      { x: width / 2 - 150, y: height - 1300, image: obstacle1Image },
+      { x: width / 2 - 130, y: height - 4350, image: obstacle1Image },
       { x: width / 2 + 250, y: height - 1800, image: obstacle1Image },
-      { x: width / 2 - 180, y: height - 3300, image: obstacle1Image },
+      { x: width / 2 - 180, y: height - 3402, image: obstacle1Image },
 
-      { x: width / 2 - 150, y: height - 4300, image: obstacle1Image },
-      { x: width / 2, y: height - 5300, image: obstacle1Image },
+      { x: width / 2 - 190, y: height - 4789, image: obstacle1Image },
+      { x: width / 2, y: height - 3300, image: obstacle1Image },
+      { x: width / 2- 200, y: height - 2300, image: obstacle1Image },
     ];
 
     var obstacle2Positions = [
-      { x: width / 2 + 250, y: height - 800, image: obstacle2Image },
-      { x: width / 2 - 180, y: height - 2300, image: obstacle2Image },
+      { x: width / 2 + 250, y: height - 4900, image: obstacle2Image },
+      { x: width / 2 - 140, y: height - 1667, image: obstacle2Image },
       { x: width / 2, y: height - 2800, image: obstacle2Image },
 
-      { x: width / 2 + 180, y: height - 3300, image: obstacle2Image },
-      { x: width / 2 + 250, y: height - 3800, image: obstacle2Image },
-      { x: width / 2 + 250, y: height - 4800, image: obstacle2Image },
-      { x: width / 2 - 180, y: height - 5500, image: obstacle2Image }
+      { x: width / 2 + 180, y: height - 1070, image: obstacle2Image },
+      { x: width / 3 + 203, y: height - 3800, image: obstacle2Image },
+      { x: width / 2 + 250, y: height - 4207, image: obstacle2Image },
+      { x: width / 2 |+ 180, y: height - 500, image: obstacle2Image }
     ];
 
     // Adicione o sprite de combustível ao jogo
@@ -145,7 +146,7 @@ class Game {
     player.getCarsAtEnd();
 
     if (allPlayers !== undefined) {
-      image(track, 0, -height * 5, width, height * 6);
+      image(track, 0, -height * 4.5, width, height * 6);
 
       this.showFuelBar();
       this.showLife();
@@ -165,7 +166,7 @@ class Game {
 
         if (currentlife <= 0) {
           cars[index - 1].changeImage("blast");
-          cars[index - 1].scale = 0.3;
+          cars[index - 1].scale = 1.8;
         }
 
         cars[index - 1].position.x = x;
@@ -183,6 +184,8 @@ class Game {
           if (player.life <= 0) {
             this.blast = true
             this.playerMoving = false;
+            gameState=2
+            this.gameOver()
           }
 
           // Altere a posição da câmera na direção y
@@ -199,7 +202,7 @@ class Game {
       this.handlePlayerControls();
 
       // Linha de chegada
-      const finshLine = height * 6 - 100;
+      const finshLine = height * 6 - 400;
 
       if (player.positionY > finshLine) {
         gameState = 2;
@@ -260,7 +263,7 @@ class Game {
     image(fuelImage, width / 2 - 130, height - player.positionY -450, 20, 20);
     fill("white");
     rect(width / 2 - 100, height - player.positionY - 450, 185, 20);
-    fill("#ffc400");
+    fill("#dbc954");
     rect(width / 2 - 100, height - player.positionY - 450, player.fuel, 20);
     noStroke();
     pop();
@@ -271,7 +274,7 @@ class Game {
     image(lifeImage, width / 2 - 130, height - player.positionY - 400, 20, 20);
     fill("white");
     rect(width / 2 - 100, height - player.positionY - 400, 185, 20);
-    fill("#f50057");
+    fill("#ff008c");
     rect(width / 2 - 100, height - player.positionY - 400, player.life, 20);
     noStroke();
     pop();

@@ -26,21 +26,21 @@ canvas {
 .greeting{
   font-size: 40px;
   color: white;
-  font-family: vollkorn;
+  font-family: 'papyrus';
   text-align: center;
 }
 
 .customInput {
   width:200px;
   height:30px;
-  border: 3px solid white;
+  border: 3px solid rgb(244, 41, 41);
   border-radius: 5px;
   padding: 5px;
   background-color:transparent;
   font-size: 20px;
   outline:none;
   color:white;
-  font-family: vollkorn;
+  font-family: 'papyrus';
   text-align: center;
 }
 
@@ -52,8 +52,8 @@ canvas {
 .customButton {
   width:180px;
   height:50px;
-  background-color: #fea834;
-  border: 3px solid white;
+  background-color: red;
+  border: 3px solid rgb(0, 0, 0);
   color: #FFFF;
   font-weight:bold;
   border-radius: 10px;
@@ -62,7 +62,7 @@ canvas {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  font-family: vollkorn;
+  font-family: 'papyrus';
   margin: 4px 2px;
   cursor: pointer;
   -webkit-transition-duration: 0.4s; /* Safari */
